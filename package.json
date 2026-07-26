@@ -1,0 +1,14 @@
+{
+  "name": "orgl-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page for One Retro Game Launcher (ORGL)",
+  "scripts": {
+    "dev": "serve code -l 8080 --no-clipboard",
+    "build": "node scripts/build.mjs",
+    "preview": "serve docs -l 8080 --no-clipboard"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

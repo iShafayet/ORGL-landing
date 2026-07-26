@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Retro Game Launcher (ORGL) - Stop scrolling. Start finishing.</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="One Retro Game Launcher (ORGL) is a commitment-first Android launcher for retro ROM libraries. Stop scrolling, pick ONE game, and start finishing it. 100% Free & Open Source (GPL-3.0).">
+  <meta name="keywords" content="retro game launcher, Android emulation launcher, ORGL, ES-DE compatible, RetroArch launcher, backlog game solver, commitment launcher, handheld launcher, Ayn Odin, Retroid Pocket">
+  <meta name="author" content="Sayem Shafayet">
+
+  <meta property="og:title" content="One Retro Game Launcher (ORGL) - Stop scrolling your library. Start finishing it.">
+  <meta property="og:description" content="The only retro gaming launcher built around commitment, not infinite browsing. ES-DE compatible, gamepad-first, 100% open source.">
+  <meta property="og:image" content="icons/logo.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/favicon.png">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Retro Scanline Overlay -->
+  <div id="crt-overlay" class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- Background Retro Grid -->
+  <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       1. Sticky Navigation
+       ========================================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" aria-label="One Retro Game Launcher Home">
+        <img src="icons/logo.png" alt="ORGL Logo" width="42" height="42">
+        <span class="brand-text">ORGL</span>
+        <span class="brand-badge">GPL-3.0</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#screenshots" class="nav-link">Screenshots</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#download" class="nav-link">Download</a>
+        <a href="#author" class="nav-link">Author</a>
+        <div class="nav-mobile-crt-wrapper">
+          <button class="crt-toggle-btn" title="Toggle Scanline Effect">
+            CRT FX: ON
+          </button>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- CRT FX Toggle -->
+        <button id="crt-toggle-btn" class="crt-toggle-btn" title="Toggle Scanline Effect">
+          CRT FX: ON
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. Hero Section
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-logo-wrapper">
+            <img src="icons/logo.png" alt="One Retro Game Launcher Logo" class="hero-logo-img">
+          </div>
+          <span class="section-tag">Commitment-First Android Launcher</span>
+          <h1 class="hero-tagline">
+            Stop scrolling your library. <br>
+            <span class="highlight-pink">Start finishing it.</span>
+          </h1>
+          <p class="hero-positioning">
+            One game at a time — the only launcher built around commitment, not infinite browsing.
+          </p>
+
+          <!-- Three Download Badges -->
+          <div class="download-buttons-group">
+            <a href="#play-store" class="badge-btn btn-play" id="play-store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+              <div class="badge-btn-text">
+                <span class="badge-btn-label">Get it on</span>
+                <span class="badge-btn-title">Google Play</span>
+              </div>
+            </a>
+
+            <a href="#fdroid" class="badge-btn btn-fdroid" id="fdroid">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20A8 8 0 0 1 4 12A8 8 0 0 1 12 4M12 6A6 6 0 0 0 6 12A6 6 0 0 0 12 18A6 6 0 0 0 18 12A6 6 0 0 0 12 6M12 8A4 4 0 0 1 16 12A4 4 0 0 1 12 16A4 4 0 0 1 8 12A4 4 0 0 1 12 8Z"/></svg>
+              <div class="badge-btn-text">
+                <span class="badge-btn-label">FOSS Build</span>
+                <span class="badge-btn-title">F-Droid</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/iShafayet/OneRetroGameLauncher/releases" target="_blank" rel="noopener noreferrer" class="badge-btn btn-github">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12C2 16.42 4.87 20.17 8.84 21.5C9.34 21.58 9.5 21.27 9.5 21degV19.31C6.73 19.91 6.14 17.97 6.14 17.97C5.68 16.81 5.03 16.5 5.03 16.5C4.12 15.88 5.1 15.9 5.1 15.9C6.1 15.97 6.63 16.93 6.63 16.93C7.5 18.45 8.97 18 9.54 17.76C9.63 17.11 9.89 16.67 10.17 16.42C7.95 16.17 5.62 15.31 5.62 11.5C5.62 10.39 6 9.5 6.65 8.79C6.55 8.54 6.2 7.5 6.75 6.15C6.75 6.15 7.59 5.88 9.5 7.17C10.29 6.95 11.15 6.84 12 6.84C12.85 6.84 13.71 6.95 14.5 7.17C16.41 5.88 17.25 6.15 17.25 6.15C17.8 7.5 17.45 8.54 17.35 8.79C18 9.5 18.38 10.39 18.38 11.5C18.38 15.32 16.04 16.16 13.81 16.41C14.17 16.72 14.5 17.33 14.5 18.26V21C14.5 21.27 14.66 21.59 15.17 21.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+              <div class="badge-btn-text">
+                <span class="badge-btn-label">Direct APK</span>
+                <span class="badge-btn-title">GitHub Releases</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Trust Line -->
+          <div class="hero-trust-bar">
+            <span class="trust-item">ES-DE compatible</span>
+            <span class="trust-item">Your ROMs &amp; media, your rules</span>
+            <span class="trust-item">Never modifies files</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-visual-card">
+            <img src="images/screenshot-1.png" alt="One Retro Game Launcher Active Commitment Interface" width="800" height="1600">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. Intro Video Section
+       ========================================================================= -->
+  <section class="video-section" id="video">
+    <div class="container">
+      <div class="crt-tv-wrapper">
+        <div class="crt-tv-bezel">
+          <div class="crt-tv-screen">
+            <video id="intro-video" poster="images/video-poster.png" playsinline preload="metadata">
+              <source src="images/intro-video.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- Video Overlay Trigger -->
+            <div id="video-overlay" class="video-play-overlay">
+              <div class="play-icon-circle">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="video-title-prompt">CLICK TO WATCH TRAILER &amp; SHOWCASE</span>
+            </div>
+          </div>
+
+          <!-- CRT Frame Control Lights -->
+          <div class="crt-controls-bar">
+            <div class="crt-leds">
+              <span class="led-indicator led-red" title="Power"></span>
+              <span class="led-indicator led-green" title="Signal"></span>
+            </div>
+            <span class="crt-brand-text">ORGL-CRT 1080p</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. Philosophy / How It Works
+       ========================================================================= -->
+  <section class="philosophy-section" id="philosophy">
+    <div class="container">
+      <span class="section-tag">How It Works</span>
+      <h2 class="section-title">The Commitment-First Philosophy</h2>
+      <p class="section-subtitle">
+        Having thousands of ROMs at your fingertips leads to choice paralysis. ORGL breaks the endless browsing loop with a 3-step ritual.
+      </p>
+
+      <div class="steps-grid">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <span class="step-number">STEP 01</span>
+          <h3 class="step-title">Pick One Game</h3>
+          <p class="step-desc">
+            Choose a title from "Tonight's Trio" suggestions, filter by system, or search your library.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <span class="step-number">STEP 02</span>
+          <h3 class="step-title">Commit</h3>
+          <p class="step-desc">
+            That game locks in. ORGL hides the rest of your library — no switching until you finish or release it.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+          <span class="step-number">STEP 03</span>
+          <h3 class="step-title">Finish or Drop</h3>
+          <p class="step-desc">
+            Mark it done or move on with peace of mind. Log your run card and pick your next adventure.
+          </p>
+        </div>
+      </div>
+
+      <!-- Kind Hearted Banner -->
+      <div class="kind-banner">
+        <p class="kind-banner-text">"Every run teaches you something."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. Features Grid
+       ========================================================================= -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <span class="section-tag">Built for Retro Hardware</span>
+      <h2 class="section-title">Features Designed Around You</h2>
+      <p class="section-subtitle">
+        ORGL stays lightweight, fast, and completely out of the way of your existing emulator setups.
+      </p>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 class="feature-title">Wishlist Play Queue</h3>
+          <p class="feature-desc">
+            Keep a focused wishlist separate from general favorites. ORGL uses it to feed "Tonight's trio" suggestions when you're ready to pick next.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4"/><circle cx="17" cy="10" r="1"/><circle cx="15" cy="13" r="1"/></svg>
+          </div>
+          <h3 class="feature-title">Your Choice of Emulator</h3>
+          <p class="feature-desc">
+            Use RetroArch cores or standalone apps (DuckStation, Dolphin, PPSSPP, melonDS, etc.). Configure launcher actions per system or per game.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3 class="feature-title">ES-DE Compatible</h3>
+          <p class="feature-desc">
+            Directly reuses your scraped media, cover art, and metadata from EmulationStation-DE. Zero re-scraping needed, completely read-only.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <h3 class="feature-title">RetroAchievements</h3>
+          <p class="feature-desc">
+            ORGL tracks your achievement progress directly. Unlocks happen inside RetroArch while ORGL keeps your active record in sync.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="feature-title">HowLongToBeat Estimates</h3>
+          <p class="feature-desc">
+            Know how long a title takes before committing. View average hours for Main Story, Main + Extra, and Completionist runs.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3 class="feature-title">Play Journal &amp; Run Cards</h3>
+          <p class="feature-desc">
+            Keep a personal log of finished and dropped runs with ratings, custom review notes, completion dates, and shareable social collages.
+          </p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h3 class="feature-title">Gamepad-First UI</h3>
+          <p class="feature-desc">
+            Designed from day one for couch and handheld gaming. Full D-pad navigation, custom button legends, and zero touch requirements.
+          </p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="feature-title">Your Files, Your Rules</h3>
+          <p class="feature-desc">
+            ROMs stay untouched and read-only. ORGL never alters game files. All app configuration lives cleanly in a portable local ORGL directory.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. Screenshots Carousel
+       ========================================================================= -->
+  <section class="screenshots-section" id="screenshots">
+    <div class="container">
+      <span class="section-tag">UI Showcase</span>
+      <h2 class="section-title">Experience the Interface</h2>
+      <p class="section-subtitle">
+        Clean, dark-mode handheld UI built for maximum readability on screens from 3.5" to 7" and OLED displays.
+      </p>
+
+      <div class="carousel-container">
+        <!-- Prev Button -->
+        <button id="carousel-prev" class="carousel-btn prev-btn" aria-label="Previous screenshot">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <!-- Carousel Track -->
+        <div class="carousel-track-wrapper" id="carousel-track">
+          <!-- Slide 1 -->
+          <div class="screenshot-slide" data-index="0">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-1.png" alt="ORGL Tonight's Trio Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Tonight's Trio</div>
+              <div class="slide-subtitle">Active Commitment Focus</div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="screenshot-slide" data-index="1">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-2.png" alt="ORGL Commitment Confirmation Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Commit Modal</div>
+              <div class="slide-subtitle">Lock in your active game</div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="screenshot-slide" data-index="2">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-3.png" alt="ORGL Library Search Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Library Search</div>
+              <div class="slide-subtitle">Scraped ES-DE Metadata</div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="screenshot-slide" data-index="3">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-4.png" alt="ORGL Play Journal Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Play Journal</div>
+              <div class="slide-subtitle">Run Cards &amp; Completion Stats</div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="screenshot-slide" data-index="4">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-5.png" alt="ORGL Emulator Mapping Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Emulator Mapping</div>
+              <div class="slide-subtitle">RetroArch &amp; Standalone Apps</div>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="screenshot-slide" data-index="5">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-6.png" alt="ORGL Wishlist Queue Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Wishlist Queue</div>
+              <div class="slide-subtitle">Prioritized Play Queue</div>
+            </div>
+          </div>
+
+          <!-- Slide 7 -->
+          <div class="screenshot-slide" data-index="6">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-7.png" alt="ORGL RetroAchievements Reader Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">RetroAchievements</div>
+              <div class="slide-subtitle">Live Progress Reading</div>
+            </div>
+          </div>
+
+          <!-- Slide 8 -->
+          <div class="screenshot-slide" data-index="7">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <img src="images/screenshot-8.png" alt="ORGL Gamepad First Controls Screen">
+              </div>
+            </div>
+            <div class="slide-caption">
+              <div class="slide-title">Gamepad First</div>
+              <div class="slide-subtitle">100% Controller Friendly</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Button -->
+        <button id="carousel-next" class="carousel-btn next-btn" aria-label="Next screenshot">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Pagination Dots -->
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. Real-World Devices Gallery
+       ========================================================================= -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <span class="section-tag">Hardware Showcase</span>
+      <h2 class="section-title">Runs on Your Handhelds</h2>
+      <p class="section-subtitle">
+        Optimized for popular Android retro gaming handhelds, retro consoles, and tablets.
+      </p>
+
+      <div class="gallery-grid">
+        <!-- Photo 1 -->
+        <div class="gallery-card" data-index="0">
+          <div class="gallery-img-wrapper">
+            <img src="images/photo-1.jpg" alt="ORGL running on AYN Odin 2 Portal" loading="lazy">
+            <div class="gallery-info-overlay">
+              <div class="gallery-device-name">AYN Odin 2 Portal</div>
+              <div class="gallery-badge">7" OLED / Snapdragon 8 Gen 2</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="gallery-card" data-index="1">
+          <div class="gallery-img-wrapper">
+            <img src="images/photo-2.jpg" alt="ORGL running on AYN Thor" loading="lazy">
+            <div class="gallery-info-overlay">
+              <div class="gallery-device-name">AYN Thor</div>
+              <div class="gallery-badge">Dual-Screen Handheld</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="gallery-card" data-index="2">
+          <div class="gallery-img-wrapper">
+            <img src="images/photo-3.jpg" alt="ORGL running on Ayaneo Pocket Air Mini" loading="lazy">
+            <div class="gallery-info-overlay">
+              <div class="gallery-device-name">Ayaneo Pocket Air Mini</div>
+              <div class="gallery-badge">Compact LCD Handheld</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="gallery-card" data-index="3">
+          <div class="gallery-img-wrapper">
+            <img src="images/photo-4.jpg" alt="ORGL running on Samsung s24 Ultra" loading="lazy">
+            <div class="gallery-info-overlay">
+              <div class="gallery-device-name">Samsung s24 Ultra</div>
+              <div class="gallery-badge">Flagship Phone / Snapdragon 8 Gen 3</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="gallery-card" data-index="4">
+          <div class="gallery-img-wrapper">
+            <img src="images/photo-5.jpg" alt="ORGL running on Samsung Tab S9" loading="lazy">
+            <div class="gallery-info-overlay">
+              <div class="gallery-device-name">Samsung Tab S9</div>
+              <div class="gallery-badge">11" AMOLED Gaming Tablet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog" aria-label="Media Preview">
+    <div class="lightbox-content-box">
+      <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close preview">&times;</button>
+      <button id="lb-prev" class="lightbox-nav-btn lb-prev" aria-label="Previous item">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="lightbox-img-wrapper">
+        <img id="lightbox-img" src="" alt="Full Preview">
+      </div>
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+      <button id="lb-next" class="lightbox-nav-btn lb-next" aria-label="Next item">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       8. Download Section CTA
+       ========================================================================= -->
+  <section class="download-section" id="download">
+    <div class="container">
+      <div class="download-cta-box">
+        <h2 class="download-cta-title">Ready to Finish Your Games?</h2>
+        <p class="download-cta-subtitle">
+          Download One Retro Game Launcher today. Free, open source, zero tracking, zero bloat.
+        </p>
+
+        <!-- Repeated Download Badges -->
+        <div class="download-buttons-group">
+          <a href="#play-store" class="badge-btn btn-play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+            <div class="badge-btn-text">
+              <span class="badge-btn-label">Get it on</span>
+              <span class="badge-btn-title">Google Play</span>
+            </div>
+          </a>
+
+          <a href="#fdroid" class="badge-btn btn-fdroid">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20A8 8 0 0 1 4 12A8 8 0 0 1 12 4M12 6A6 6 0 0 0 6 12A6 6 0 0 0 12 18A6 6 0 0 0 18 12A6 6 0 0 0 12 6M12 8A4 4 0 0 1 16 12A4 4 0 0 1 12 16A4 4 0 0 1 8 12A4 4 0 0 1 12 8Z"/></svg>
+            <div class="badge-btn-text">
+              <span class="badge-btn-label">FOSS Build</span>
+              <span class="badge-btn-title">F-Droid</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/iShafayet/OneRetroGameLauncher/releases" target="_blank" rel="noopener noreferrer" class="badge-btn btn-github">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12C2 16.42 4.87 20.17 8.84 21.5C9.34 21.58 9.5 21.27 9.5 21degV19.31C6.73 19.91 6.14 17.97 6.14 17.97C5.68 16.81 5.03 16.5 5.03 16.5C4.12 15.88 5.1 15.9 5.1 15.9C6.1 15.97 6.63 16.93 6.63 16.93C7.5 18.45 8.97 18 9.54 17.76C9.63 17.11 9.89 16.67 10.17 16.42C7.95 16.17 5.62 15.31 5.62 11.5C5.62 10.39 6 9.5 6.65 8.79C6.55 8.54 6.2 7.5 6.75 6.15C6.75 6.15 7.59 5.88 9.5 7.17C10.29 6.95 11.15 6.84 12 6.84C12.85 6.84 13.71 6.95 14.5 7.17C16.41 5.88 17.25 6.15 17.25 6.15C17.8 7.5 17.45 8.54 17.35 8.79C18 9.5 18.38 10.39 18.38 11.5C18.38 15.32 16.04 16.16 13.81 16.41C14.17 16.72 14.5 17.33 14.5 18.26V21C14.5 21.27 14.66 21.59 15.17 21.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg>
+            <div class="badge-btn-text">
+              <span class="badge-btn-label">Direct APK</span>
+              <span class="badge-btn-title">GitHub Releases</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="download-meta-notes">
+          <span class="download-note-pill">Free &amp; Open Source</span>
+          <span class="download-note-pill">GPL-3.0 License</span>
+          <span class="download-note-pill">F-Droid / FOSS Build Available</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. About the Author
+       ========================================================================= -->
+  <section class="author-section" id="author">
+    <div class="container">
+      <div class="author-card">
+        <img src="images/author.jpg" alt="Sayem Shafayet" class="author-avatar" width="100" height="100">
+        <div class="author-details">
+          <h3 class="author-name">Sayem Shafayet</h3>
+          <p class="author-bio">
+            FOSS engineer and maintainer building open, user-respecting software.
+          </p>
+          <div class="author-links">
+            <a href="https://sayemshafayet.com" target="_blank" rel="noopener noreferrer" class="author-link-btn">
+              Website &rarr;
+            </a>
+            <a href="https://github.com/iShafayet" target="_blank" rel="noopener noreferrer" class="author-link-btn">
+              GitHub &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       10. Footer
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#" class="brand-logo" aria-label="One Retro Game Launcher Home">
+            <img src="icons/logo.png" alt="ORGL Logo" width="36" height="36">
+            <span class="brand-text">ORGL</span>
+          </a>
+          <p class="footer-trust-line">Your ROMs, your media, your rules.</p>
+          <p class="footer-disclaimer">
+            ORGL is not an emulator and does not include or distribute any ROMs or copyrighted games.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: var(--text-primary); font-family: var(--font-pixel); font-size: 0.75rem; margin-bottom: 1rem;">PROJECT</h4>
+          <ul style="line-height: 2;">
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GPL-3.0 License</a></li>
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher/releases" target="_blank" rel="noopener noreferrer">Releases &amp; Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 style="color: var(--text-primary); font-family: var(--font-pixel); font-size: 0.75rem; margin-bottom: 1rem;">COMMUNITY</h4>
+          <ul style="line-height: 2;">
+            <li><a href="https://sayemshafayet.com" target="_blank" rel="noopener noreferrer">Author's Site</a></li>
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher/issues" target="_blank" rel="noopener noreferrer">Report an Issue</a></li>
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher/issues" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Sayem Shafayet. Released under the GPL-3.0 License.</div>
+        <div>Built for retro gaming enthusiasts worldwide.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Vanilla JS Script -->
+  <script src="script.js"></script>
+</body>
+</html>
