@@ -492,6 +492,16 @@ ul {
   transform: scale(1.05) rotate(2deg);
 }
 
+.hero-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(1rem, 2.4vw, 1.45rem);
+  color: var(--neon-cyan);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 12px var(--neon-cyan-glow);
+}
+
 .hero-tagline {
   font-family: var(--font-pixel);
   font-size: clamp(1.5rem, 3.5vw, 2.6rem);
