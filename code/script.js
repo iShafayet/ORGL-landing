@@ -8,37 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // --------------------------------------------------------------------------
-  // 1. CRT Scanline Overlay Toggle
-  // --------------------------------------------------------------------------
-  const crtOverlay = document.getElementById('crt-overlay');
-  const crtToggleBtns = document.querySelectorAll('.crt-toggle-btn');
-
-  function updateCrtToggleState(isDisabled) {
-    crtToggleBtns.forEach(btn => {
-      btn.textContent = isDisabled ? 'CRT FX: OFF' : 'CRT FX: ON';
-    });
-  }
-
-  // Load saved preference
-  const savedCrtState = localStorage.getItem('orgl_crt_enabled');
-  if (savedCrtState === 'false' && crtOverlay) {
-    crtOverlay.classList.add('disabled');
-    updateCrtToggleState(true);
-  }
-
-  if (crtToggleBtns.length > 0 && crtOverlay) {
-    crtToggleBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isDisabled = crtOverlay.classList.toggle('disabled');
-        updateCrtToggleState(isDisabled);
-        localStorage.setItem('orgl_crt_enabled', !isDisabled);
-      });
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 2. Mobile Navigation Hamburger Menu
+  // 1. Mobile Navigation Hamburger Menu
   // --------------------------------------------------------------------------
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const navLinks = document.getElementById('nav-links');
