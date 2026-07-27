@@ -137,20 +137,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
 
+    function getNearestSlideIndex() {
+      const trackLeft = carouselTrack.scrollLeft;
+      let nearest = 0;
+      let nearestDist = Infinity;
+      slides.forEach((slide, idx) => {
+        const dist = Math.abs(slide.offsetLeft - trackLeft);
+        if (dist < nearestDist) {
+          nearestDist = dist;
+          nearest = idx;
+        }
+      });
+      return nearest;
+    }
+
     function scrollToSlide(index) {
       if (slides[index]) {
-        const slideWidth = slides[0].offsetWidth + 24; // width + gap
         carouselTrack.scrollTo({
-          left: slideWidth * index,
+          left: slides[index].offsetLeft,
           behavior: 'smooth'
         });
       }
     }
 
     function updateActiveDot() {
-      const slideWidth = slides[0].offsetWidth + 24;
-      const currentIndex = Math.round(carouselTrack.scrollLeft / slideWidth);
-
+      const currentIndex = getNearestSlideIndex();
       dots.forEach((dot, idx) => {
         if (idx === currentIndex) {
           dot.classList.add('active');
@@ -164,15 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        const slideWidth = slides[0].offsetWidth + 24;
-        carouselTrack.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+        scrollToSlide(Math.max(0, getNearestSlideIndex() - 1));
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        const slideWidth = slides[0].offsetWidth + 24;
-        carouselTrack.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        scrollToSlide(Math.min(slides.length - 1, getNearestSlideIndex() + 1));
       });
     }
   }
@@ -190,22 +199,35 @@ document.addEventListener('DOMContentLoaded', () => {
   // Collect all lightbox triggers across screenshots & gallery
   const galleryItems = [];
 
-  // Register Screenshot slides
+  // Register Screenshot slides (one lightbox entry per image)
   document.querySelectorAll('.screenshot-slide').forEach((slide, idx) => {
-    const img = slide.querySelector('img');
     const title = slide.querySelector('.slide-title')?.textContent || `Screenshot ${idx + 1}`;
     const sub = slide.querySelector('.slide-subtitle')?.textContent || '';
-    if (img) {
+    const imgs = slide.querySelectorAll('.phone-screen img');
+
+    imgs.forEach((img) => {
+      const caption = img.getAttribute('data-caption') || `${title} - ${sub}`;
       const itemData = {
         src: img.getAttribute('src'),
         alt: img.getAttribute('alt') || title,
-        title: `${title} - ${sub}`,
+        title: caption,
         group: 'screenshots'
       };
       const galleryIndex = galleryItems.length;
       galleryItems.push(itemData);
 
-      slide.addEventListener('click', () => openLightbox(galleryIndex));
+      img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(galleryIndex);
+      });
+    });
+
+    // Keep whole-slide click for single-image slides
+    if (imgs.length === 1) {
+      slide.addEventListener('click', () => {
+        const firstIdx = galleryItems.findIndex(item => item.src === imgs[0].getAttribute('src'));
+        if (firstIdx >= 0) openLightbox(firstIdx);
+      });
     }
   });
 
