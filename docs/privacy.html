@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — One Retro Game Launcher (ORGL)</title>
+  <meta name="description" content="Privacy policy for One Retro Game Launcher (ORGL). No analytics, no ads, no telemetry — your library stays on your device.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0d0f22">
+  <link rel="canonical" href="https://ishafayet.github.io/ORGL-landing/privacy.html">
+  <link rel="icon" type="image/png" href="icons/favicon.png">
+  <link rel="apple-touch-icon" href="icons/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="crt-overlay" class="crt-overlay" aria-hidden="true"></div>
+  <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="One Retro Game Launcher Home">
+        <img src="icons/logo.png" alt="ORGL Logo" width="42" height="42">
+        <span class="brand-text">ORGL</span>
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="privacy.html" class="nav-link active">Privacy</a>
+        <a href="terms.html" class="nav-link">Terms</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-page">
+    <div class="container">
+      <article class="legal-content">
+        <nav class="legal-nav" aria-label="Legal pages">
+          <a href="privacy.html" class="active">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+
+        <h1>Privacy Policy — One Retro Game Launcher (ORGL)</h1>
+        <p class="legal-meta">
+          <strong>Last updated:</strong> July 27, 2026<br>
+          <strong>Effective for app version:</strong> 0.3.x and later
+        </p>
+
+        <p>Sayem Shafayet (“we”, “us”, “the developer”) operates <strong>One Retro Game Launcher</strong> (“ORGL”, “the app”). This policy explains what ORGL does and does not do with information on your device.</p>
+        <p>If you do not agree with this policy, do not use the app.</p>
+
+        <hr>
+
+        <h2>Summary</h2>
+        <ul>
+          <li>ORGL includes <strong>no analytics, ads, crash reporters, or telemetry SDKs</strong>.</li>
+          <li>ORGL does <strong>not</strong> sell your data.</li>
+          <li>Your ROM library, play journal, and settings stay <strong>on your device</strong> and in folders <strong>you choose</strong>.</li>
+          <li>Network access is used <strong>only when you enable optional features</strong> (for example RetroAchievements or artwork lookup).</li>
+          <li>Third-party services you connect to may collect data under <strong>their own</strong> policies — that is outside ORGL’s control.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Information ORGL stores locally</h2>
+        <p>ORGL may store the following on your device:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ROM and media file references</td>
+              <td>Library browsing and launching games you already have</td>
+            </tr>
+            <tr>
+              <td>Game metadata and artwork</td>
+              <td>Display in the library and Play mode</td>
+            </tr>
+            <tr>
+              <td>Play journal and launch stats</td>
+              <td>ORGL’s “one game at a time” workflow</td>
+            </tr>
+            <tr>
+              <td>App preferences</td>
+              <td>Theme, layout, emulator choices, integrations</td>
+            </tr>
+            <tr>
+              <td>Folder access URIs</td>
+              <td>Access ROM and ORGL data folders you select via Android’s Storage Access Framework</td>
+            </tr>
+            <tr>
+              <td>Optional integration credentials</td>
+              <td>Only if you enter them (RetroAchievements, ScreenScraper, etc.)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>ORGL <strong>does not bundle ROMs</strong> and <strong>does not upload your ROM files</strong> to the developer.</p>
+        <p>Scraped artwork and ORGL-owned files are written only to the <strong>ORGL data folder</strong> you designate. Your ROMs folder is treated as <strong>read-only</strong>.</p>
+
+        <hr>
+
+        <h2>Network use and optional third-party services</h2>
+        <p>ORGL requests the <code>INTERNET</code> permission because some features contact external services <strong>only when you turn them on or use them</strong>:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>When used</th>
+              <th>What may be sent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>RetroAchievements</strong></td>
+              <td>If you sign in</td>
+              <td>Username, password, and API requests to retroachievements.org</td>
+            </tr>
+            <tr>
+              <td><strong>ScreenScraper</strong></td>
+              <td>If configured</td>
+              <td>Account details and game search terms to screenscraper.fr</td>
+            </tr>
+            <tr>
+              <td><strong>HowLongToBeat</strong></td>
+              <td>If enabled</td>
+              <td>Game title search queries to howlongtobeat.com</td>
+            </tr>
+            <tr>
+              <td><strong>libretro-thumbnails</strong></td>
+              <td>During artwork fallback</td>
+              <td>Public thumbnail URLs (GitHub)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>These services are operated by third parties. They may log requests, use cookies, or apply their own analytics or telemetry. <strong>ORGL does not control and is not responsible for third-party data practices.</strong> Review their policies before use:</p>
+        <ul>
+          <li>RetroAchievements: <a href="https://retroachievements.org" target="_blank" rel="noopener noreferrer">retroachievements.org</a></li>
+          <li>ScreenScraper: <a href="https://www.screenscraper.fr" target="_blank" rel="noopener noreferrer">screenscraper.fr</a></li>
+          <li>HowLongToBeat: <a href="https://howlongtobeat.com" target="_blank" rel="noopener noreferrer">howlongtobeat.com</a></li>
+        </ul>
+        <p>If you do not configure these integrations, ORGL does not need to contact them for your account.</p>
+
+        <hr>
+
+        <h2>What ORGL does not collect</h2>
+        <p>ORGL does <strong>not</strong>:</p>
+        <ul>
+          <li>Run Firebase, Google Analytics, or similar tracking</li>
+          <li>Display advertisements</li>
+          <li>Fingerprint your device for marketing</li>
+          <li>Upload your library or ROM contents to developer-operated servers</li>
+          <li>Require an ORGL account or cloud login</li>
+        </ul>
+        <p>There is no developer-operated backend that receives your personal library data.</p>
+
+        <hr>
+
+        <h2>Permissions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Permission</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Internet</strong></td>
+              <td>Optional integrations and artwork download</td>
+            </tr>
+            <tr>
+              <td><strong>Notifications</strong></td>
+              <td>Scrape progress (you can deny on Android 13+)</td>
+            </tr>
+            <tr>
+              <td><strong>Foreground service</strong></td>
+              <td>Long-running library scrape jobs</td>
+            </tr>
+            <tr>
+              <td><strong>Wake lock</strong></td>
+              <td>Keep scrape jobs running while the screen is off</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Folder access uses Android’s document picker; ORGL does not request broad storage permissions for arbitrary file access.</p>
+
+        <hr>
+
+        <h2>Children’s privacy</h2>
+        <p>ORGL is a general-purpose game library tool and is <strong>not directed at children under 13</strong>. We do not knowingly collect personal information from children. If you believe a child has provided integration credentials in the app, remove them in Settings or uninstall the app.</p>
+
+        <hr>
+
+        <h2>Data retention and deletion</h2>
+        <p>You can delete ORGL-related data by:</p>
+        <ul>
+          <li>Clearing app data or uninstalling ORGL</li>
+          <li>Removing folder access in Android settings</li>
+          <li>Deleting files inside your ORGL data folder</li>
+        </ul>
+        <p>Integration credentials stored in the ORGL data folder can be removed there or by clearing saved settings.</p>
+
+        <hr>
+
+        <h2>Security</h2>
+        <p>Credentials you save (for example RetroAchievements) may be stored in app preferences and, if you opt in, encrypted in your ORGL data folder on disk. No method of storage is perfectly secure; use integrations at your own discretion.</p>
+
+        <hr>
+
+        <h2>Open source</h2>
+        <p>ORGL is open source under the <strong>GNU General Public License v3.0</strong>. Source code is published at:</p>
+        <p><a href="https://github.com/iShafayet/OneRetroGameLauncher" target="_blank" rel="noopener noreferrer">github.com/iShafayet/OneRetroGameLauncher</a></p>
+
+        <hr>
+
+        <h2>Changes to this policy</h2>
+        <p>We may update this policy from time to time. The “Last updated” date will change when we do. Continued use after an update means you accept the revised policy, subject to any in-app re-acceptance flow.</p>
+
+        <hr>
+
+        <h2>Contact</h2>
+        <p>
+          <strong>Sayem Shafayet</strong><br>
+          Website: <a href="https://sayemshafayet.com" target="_blank" rel="noopener noreferrer">sayemshafayet.com</a><br>
+          Project: <a href="https://oneretrogamelauncher.com" target="_blank" rel="noopener noreferrer">oneretrogamelauncher.com</a><br>
+          GitHub: <a href="https://github.com/iShafayet/OneRetroGameLauncher" target="_blank" rel="noopener noreferrer">github.com/iShafayet/OneRetroGameLauncher</a>
+        </p>
+        <p>For privacy questions, open an issue on GitHub or contact the developer through the project website.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo" aria-label="One Retro Game Launcher Home">
+            <img src="icons/logo.png" alt="ORGL Logo" width="36" height="36">
+            <span class="brand-text">ORGL</span>
+          </a>
+          <p class="footer-trust-line">Your ROMs, your media, your rules.</p>
+        </div>
+        <div class="footer-col">
+          <h4 style="color: var(--text-primary); font-family: var(--font-pixel); font-size: 0.75rem; margin-bottom: 1rem;">LEGAL</h4>
+          <ul style="line-height: 2;">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 style="color: var(--text-primary); font-family: var(--font-pixel); font-size: 0.75rem; margin-bottom: 1rem;">PROJECT</h4>
+          <ul style="line-height: 2;">
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://github.com/iShafayet/OneRetroGameLauncher/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GPL-3.0 License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Sayem Shafayet. Released under the GPL-3.0 License.</div>
+        <div><a href="index.html">Back to home</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
