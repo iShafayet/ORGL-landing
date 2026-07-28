@@ -359,5 +359,65 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
   }
 
+  // --------------------------------------------------------------------------
+  // 8. Google Play Closed Beta Dialog
+  // --------------------------------------------------------------------------
+  const playStoreModal = document.getElementById('play-store-modal');
+  const playStoreEmailBtn = document.getElementById('play-store-email-btn');
+  const playStoreTriggers = document.querySelectorAll('.js-play-store-trigger');
+  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.sayemshafayet.onereogamelauncher';
+  const BETA_REQUEST_EMAIL = 'collab@sayemshafayet.com';
+
+  function buildBetaMailto() {
+    const subject = 'ORGL Google Play Closed Beta Access Request';
+    const body = [
+      'Hello, ',
+      '',
+      'I would like to request access to the One Retro Game Launcher (ORGL) closed beta on Google Play. ',
+      '',
+      'Thank you!'
+    ].join('\n');
+
+    return `mailto:${BETA_REQUEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  function openPlayStoreModal() {
+    if (!playStoreModal) return;
+    playStoreModal.classList.add('is-open');
+    playStoreModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    playStoreModal.querySelector('.dialog-close-btn')?.focus();
+  }
+
+  function closePlayStoreModal() {
+    if (!playStoreModal) return;
+    playStoreModal.classList.remove('is-open');
+    playStoreModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (playStoreEmailBtn) {
+    playStoreEmailBtn.href = buildBetaMailto();
+  }
+
+  playStoreTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openPlayStoreModal();
+    });
+  });
+
+  if (playStoreModal) {
+    playStoreModal.querySelectorAll('[data-dialog-close]').forEach((el) => {
+      el.addEventListener('click', closePlayStoreModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && playStoreModal.classList.contains('is-open')) {
+        closePlayStoreModal();
+      }
+    });
+  }
+
   console.log('ORGL Website script initialized successfully.');
 });
