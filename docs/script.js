@@ -360,12 +360,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 8. Google Play Closed Beta Dialog
+  // 8. Dialog helpers (Play Store beta + Obtainium)
   // --------------------------------------------------------------------------
+  function openDialog(modal) {
+    if (!modal) return;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.dialog-close-btn')?.focus();
+  }
+
+  function closeDialog(modal) {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (!document.querySelector('.dialog-modal.is-open')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  function wireDialog(modal) {
+    if (!modal) return;
+    modal.querySelectorAll('[data-dialog-close]').forEach((el) => {
+      el.addEventListener('click', () => closeDialog(modal));
+    });
+  }
+
+  // Google Play Closed Beta
   const playStoreModal = document.getElementById('play-store-modal');
   const playStoreEmailBtn = document.getElementById('play-store-email-btn');
   const playStoreTriggers = document.querySelectorAll('.js-play-store-trigger');
-  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.sayemshafayet.onereogamelauncher';
   const BETA_REQUEST_EMAIL = 'collab@sayemshafayet.com';
 
   function buildBetaMailto() {
@@ -381,21 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return `mailto:${BETA_REQUEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  function openPlayStoreModal() {
-    if (!playStoreModal) return;
-    playStoreModal.classList.add('is-open');
-    playStoreModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    playStoreModal.querySelector('.dialog-close-btn')?.focus();
-  }
-
-  function closePlayStoreModal() {
-    if (!playStoreModal) return;
-    playStoreModal.classList.remove('is-open');
-    playStoreModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
   if (playStoreEmailBtn) {
     playStoreEmailBtn.href = buildBetaMailto();
   }
@@ -403,21 +412,27 @@ document.addEventListener('DOMContentLoaded', () => {
   playStoreTriggers.forEach((trigger) => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
-      openPlayStoreModal();
+      openDialog(playStoreModal);
     });
   });
+  wireDialog(playStoreModal);
 
-  if (playStoreModal) {
-    playStoreModal.querySelectorAll('[data-dialog-close]').forEach((el) => {
-      el.addEventListener('click', closePlayStoreModal);
-    });
+  // Obtainium FOSS install
+  const obtainiumModal = document.getElementById('obtainium-modal');
+  const obtainiumTriggers = document.querySelectorAll('.js-obtainium-trigger');
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && playStoreModal.classList.contains('is-open')) {
-        closePlayStoreModal();
-      }
+  obtainiumTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openDialog(obtainiumModal);
     });
-  }
+  });
+  wireDialog(obtainiumModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.dialog-modal.is-open').forEach((modal) => closeDialog(modal));
+  });
 
   console.log('ORGL Website script initialized successfully.');
 });

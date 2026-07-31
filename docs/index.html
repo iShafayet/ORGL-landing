@@ -167,11 +167,11 @@
               </div>
             </a>
 
-            <a href="#fdroid" class="badge-btn btn-fdroid" id="fdroid">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20A8 8 0 0 1 4 12A8 8 0 0 1 12 4M12 6A6 6 0 0 0 6 12A6 6 0 0 0 12 18A6 6 0 0 0 18 12A6 6 0 0 0 12 6M12 8A4 4 0 0 1 16 12A4 4 0 0 1 12 16A4 4 0 0 1 8 12A4 4 0 0 1 12 8Z"/></svg>
+            <a href="#" class="badge-btn btn-obtainium js-obtainium-trigger" role="button">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 2a8 8 0 1 1-8 8 8 8 0 0 1 8-8zm-1 3h2v6.17l2.59-2.58L17 12l-5 5-5-5 1.41-1.41L11 13.17z"/></svg>
               <div class="badge-btn-text">
                 <span class="badge-btn-label">FOSS Build</span>
-                <span class="badge-btn-title">F-Droid</span>
+                <span class="badge-btn-title">Obtainium</span>
               </div>
             </a>
 
@@ -624,11 +624,11 @@
             </div>
           </a>
 
-          <a href="#fdroid" class="badge-btn btn-fdroid">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20A8 8 0 0 1 4 12A8 8 0 0 1 12 4M12 6A6 6 0 0 0 6 12A6 6 0 0 0 12 18A6 6 0 0 0 18 12A6 6 0 0 0 12 6M12 8A4 4 0 0 1 16 12A4 4 0 0 1 12 16A4 4 0 0 1 8 12A4 4 0 0 1 12 8Z"/></svg>
+          <a href="#" class="badge-btn btn-obtainium js-obtainium-trigger" role="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 2a8 8 0 1 1-8 8 8 8 0 0 1 8-8zm-1 3h2v6.17l2.59-2.58L17 12l-5 5-5-5 1.41-1.41L11 13.17z"/></svg>
             <div class="badge-btn-text">
               <span class="badge-btn-label">FOSS Build</span>
-              <span class="badge-btn-title">F-Droid</span>
+              <span class="badge-btn-title">Obtainium</span>
             </div>
           </a>
 
@@ -644,7 +644,7 @@
         <div class="download-meta-notes">
           <span class="download-note-pill">Free &amp; Open Source</span>
           <span class="download-note-pill">GPL-3.0 License</span>
-          <span class="download-note-pill">F-Droid / FOSS Build Available</span>
+          <span class="download-note-pill">Obtainium / FOSS Build Available</span>
         </div>
       </div>
     </div>
@@ -734,13 +734,47 @@
       <p class="dialog-text">
         Want in? Send a quick email and we'll get back to you when a spot opens up.
       </p>
-      <p class="dialog-text dialog-play-link">
+      <p class="dialog-text dialog-inline-link">
         Already enrolled?
-        <a href="https://play.google.com/store/apps/details?id=com.sayemshafayet.onereogamelauncher" target="_blank" rel="noopener noreferrer" id="play-store-listing-link">View on Google Play</a>
+        <a href="https://play.google.com/store/apps/details?id=com.sayemshafayet.onereogamelauncher" target="_blank" rel="noopener noreferrer">View on Google Play</a>
         — you'll only see the listing if you're already in the program.
       </p>
       <div class="dialog-actions">
         <a href="#" id="play-store-email-btn" class="dialog-btn dialog-btn-primary">Request access by email</a>
+        <button type="button" class="dialog-btn dialog-btn-secondary" data-dialog-close>Not now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Obtainium FOSS Install Dialog -->
+  <div id="obtainium-modal" class="dialog-modal" aria-hidden="true" role="dialog" aria-labelledby="obtainium-modal-title" aria-modal="true">
+    <div class="dialog-backdrop" data-dialog-close tabindex="-1"></div>
+    <div class="dialog-panel">
+      <button type="button" class="dialog-close-btn" aria-label="Close dialog" data-dialog-close>&times;</button>
+      <span class="section-tag dialog-tag">FOSS Install</span>
+      <h2 id="obtainium-modal-title" class="dialog-title">Install with Obtainium</h2>
+      <p class="dialog-text">
+        <strong>Obtainium</strong> is an open-source Android app that installs and updates apps
+        directly from sources like GitHub — no Google Play account required.
+      </p>
+      <p class="dialog-text">
+        If you already have Obtainium, the button below adds the ORGL FOSS package
+        (<code>com.sayemshafayet.orglfoss</code>) and keeps it updated from GitHub releases.
+      </p>
+      <p class="dialog-text dialog-inline-link">
+        Don't have Obtainium yet?
+        Get it from
+        <a href="https://f-droid.org/en/packages/dev.imranr.obtainium.fdroid/" target="_blank" rel="noopener noreferrer">F-Droid</a>,
+        then come back and open the ORGL link.
+      </p>
+      <div class="dialog-actions">
+        <a
+          id="obtainium-open-btn"
+          class="dialog-btn dialog-btn-primary"
+          href="https://apps.obtainium.imranr.dev/redirect.html?r=obtainium://app/%7B%22id%22%3A%22com.sayemshafayet.orglfoss%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FiShafayet%2FOneRetroGameLauncher%22%2C%22author%22%3A%22iShafayet%22%2C%22name%22%3A%22One%20Retro%20Game%20Launcher%22%2C%22preferredApkIndex%22%3A0%2C%22overrideSource%22%3A%22GitHub%22%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Atrue%2C%5C%22apkFilterRegEx%5C%22%3A%5C%22orgl-foss-release%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22about%5C%22%3A%5C%22Stop%20scrolling%20your%20library.%20Start%20finishing%20it.%20FOSS%20package%20com.sayemshafayet.orglfoss.%5C%22%7D%22%7D"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Open in Obtainium</a>
         <button type="button" class="dialog-btn dialog-btn-secondary" data-dialog-close>Not now</button>
       </div>
     </div>

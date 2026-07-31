@@ -604,11 +604,11 @@ ul {
   transform: translateY(-3px);
 }
 
-.badge-btn.btn-fdroid {
+.badge-btn.btn-obtainium {
   border-color: rgba(255, 107, 0, 0.3);
 }
 
-.badge-btn.btn-fdroid:hover {
+.badge-btn.btn-obtainium:hover {
   border-color: var(--neon-orange);
   background: rgba(255, 107, 0, 0.1);
   box-shadow: var(--glow-orange);
@@ -1366,14 +1366,24 @@ ul {
   color: var(--text-primary);
 }
 
-.dialog-play-link a {
+.dialog-inline-link a {
   color: var(--neon-cyan);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.dialog-play-link a:hover {
+.dialog-inline-link a:hover {
   color: var(--neon-pink);
+}
+
+.dialog-text code {
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  font-size: 0.88em;
+  background: var(--bg-card);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--neon-orange);
+  word-break: break-all;
 }
 
 .dialog-actions {
